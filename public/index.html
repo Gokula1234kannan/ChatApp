@@ -26,7 +26,7 @@
         const sendBtn = document.getElementById("sendBtn");
         const messageInput = document.getElementById("message");
         const allMessages = document.getElementById("messages");
-        const socket = io(Window.location.origin);
+        const socket = io(window.location.origin);
 
         socket.on("message", (message) => {
           const p = document.createElement("p");
