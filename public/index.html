@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="chat-container">
+      <h1>Gokul ChatApp</h1>
+      <div class="input-area">
+        <input
+          type="text"
+          id="message"
+          placeholder="Type your message here..."
+        />
+        <button id="sendBtn">Send</button>
+      </div>
+
+      <div id="messages"></div>
+
+      <script src="/socket.io/socket.io.js"></script>
+
+      <script>
+        const sendBtn = document.getElementById("sendBtn");
+        const messageInput = document.getElementById("message");
+        const allMessages = document.getElementById("messages");
+        const socket = io();
+
+        socket.on("message", (message) => {
+          const p = document.createElement("p");
+          p.innerText = message.message;
+          if (message.id === socket.id) {
+            p.classList.add("my-message"); 
+          } else {
+            p.classList.add("other-message"); 
+          }
+
+          allMessages.appendChild(p);
+        });
+
+        sendBtn.addEventListener("click", () => {
+          const message = messageInput.value;
+          console.log(message);
+          socket.emit("user-message", message);
+          messageInput.value = "";
+        });
+      </script>
+    </div>
+  </body>
+</html>
