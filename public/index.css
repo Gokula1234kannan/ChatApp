@@ -6,41 +6,45 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  overflow: hidden;
+  /* ✅ Prevent whole page scroll */
 }
 
-.chat-container {
+#chat-container {
   width: 380px;
   height: 550px;
   background: #fff;
+
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  /* ✅ Important */
   overflow: hidden;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-h1 {
+#chat-container h1 {
+  background: #128C7E;
+  color: white;
   margin: 0;
   padding: 15px;
   text-align: center;
-  background: #075E54;
-  color: white;
-  font-size: 20px;
+  font-weight: normal;
 }
 
 #messages {
   flex: 1;
+  /* ✅ Takes up remaining height */
   padding: 15px;
   overflow-y: auto;
+  /* ✅ Only this scrolls */
   display: flex;
-  /* important */
   flex-direction: column;
-  /* important */
   gap: 8px;
   background: #ece5dd;
 }
 
-/* Your message (right side) */
+/* Messages styling remains same */
 .my-message {
   background: #dcf8c6;
   padding: 8px 12px;
@@ -50,7 +54,6 @@ h1 {
   font-size: 15px;
 }
 
-/* Other user message (left side) */
 .other-message {
   background: #ffffff;
   padding: 8px 12px;
